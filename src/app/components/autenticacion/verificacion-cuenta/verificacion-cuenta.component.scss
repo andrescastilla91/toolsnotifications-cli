@@ -1,0 +1,32 @@
+.seccion-diagonal {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%; /* Altura de la sección */
+}
+
+.seccion-diagonal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2000;
+  background-color: #5599FD; /* Color azul en la mitad */
+  transform-origin: bottom right;
+  transform: skewY(340deg); /* Cambia el ángulo de la división diagonal */
+}
+
+.seccion-diagonal::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2000;
+  background-color: transparent; /* Mitad transparente */
+  transform-origin: bottom left;
+  transform: skewY(-20deg); /* El mismo ángulo de inclinación que en ::before */
+}

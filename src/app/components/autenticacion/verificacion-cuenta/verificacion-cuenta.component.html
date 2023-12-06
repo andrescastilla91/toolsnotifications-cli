@@ -1,0 +1,48 @@
+
+<div class="seccion-diagonal" >
+  <nav class="navbar navbar-expand-lg position-relative" style="z-index: 2000;">
+    <div class="position-absolute top-0 start-0">
+      <img src="./../../../assets/images/logo-toolsnotifications.svg" alt="" width="300" height="180">
+    </div>
+    <div class="container-fluid d-flex justify-content-end">
+      <div>
+        <button (click)="onBtnCerrarSesion()" class="btn btn-danger px-5" type="button">Salir</button>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="row" style="margin-top: 110px;">
+      <div class="col-md-6 align-self-end">
+        <h1 class="text-end me-2" style="font-family: 'Comic Sans MS', cursive, sans-serif;" >
+          ¡Casi listo para empezar! Hemos enviado un correo electrónico a tu dirección registrada. 
+          Por favor, verifica tu cuenta ingresando el codigo que te hemos enviado. Una vez hecho, estarás listo para sumergirte en el mundo de las notificaciones increíbles. ¡Gracias por unirte a nosotros!</h1>
+      </div>
+      <div class="col-md-6">
+        <div class="card shadow p-3 bg-body rounded">
+          <div class="card-body text-center" style="margin: 30px 10px;">
+            <h1 class="fs-1 mb-3 lh-base" >Verifica tu Cuenta</h1>
+            <p class="mt-2">{{emailOculto}}</p>
+            <form [formGroup]="formVerificacionCuenta" class="row mt-4">
+              <div class="col-md-12 col-lg-12">
+                <div class="form-floating mb-3">
+                  <input type="number" class="form-control text-center" maxlength="6" style="letter-spacing: 1em;" id="codigo" formControlName="codigo">
+                  <label for="codigo">Codigo de Verificación</label>
+                </div>
+              </div>
+              <div class="col-md-12 col-lg-12">
+                <button (click)="postVerificacion()" type="button" class="btn btn-outline-primary w-100">Verificar</button>
+              </div>
+            </form>
+  
+            <a *ngIf="dataTimpoReenvio.status">
+              <small>{{'Volver a enviar en ' + dataTimpoReenvio.time + 's'}}</small>
+            </a>
+            <a *ngIf="!dataTimpoReenvio.status" (click)="postReenviarCodigoVerificacion()" style="cursor: pointer;">
+              <small>Reenviar codigo</small>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
