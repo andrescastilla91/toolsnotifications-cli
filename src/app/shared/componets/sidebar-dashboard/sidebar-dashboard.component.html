@@ -1,0 +1,37 @@
+<div class="offcanvas offcanvas-start " tabindex="-2" id="offcanvasResponsive">
+  <div class="offcanvas-header">
+    <h2>
+      <img src="./../../../../assets/images/logo-toolsnotifications.svg" style="height: 40px;" alt="">
+      <span class="fw-bold text-muted">ToolsNotifications</span>
+    </h2>
+    <button mat-icon-button data-bs-dismiss="offcanvas">
+      <i class="bi bi-x-circle"></i>
+    </button>
+  </div>
+  <div class="offcanvas-body" style="height: 100%;">
+    <mat-accordion displayMode="flat">
+      <mat-expansion-panel *ngFor="let menuItem of menuItems" [hideToggle]="menuItem.submenu.length == 0? true : false" [disabled]="!menuItem.submenu.length">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="position-relative">
+            <a class="text-decoration-none text-dark" [routerLink]="menuItem.class === '' ? [menuItem.path] : null " >
+              <i class="fs-5" [ngClass]="[menuItem.icon]"></i>
+              <span class="ps-2">{{menuItem.title}}</span>
+              <span class="position-absolute top-50 end-0 translate-middle-y badge bg-secondary" *ngIf="menuItem.badge != '' ">{{menuItem.badge}}</span>
+            </a>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-expansion-panel *ngFor="let menuSubItem of menuItem.submenu" [hideToggle]="!menuItem.isExternalLink" [disabled]="!menuSubItem.submenu.length">
+          <mat-expansion-panel-header class="border-0 border-top border-light border-3">
+            <mat-panel-title class="position-relative ps-3">
+              <a class="text-decoration-none text-dark" [routerLink]="menuSubItem.class === '' ? [menuSubItem.path] : null " >
+                <i class="fs-5" [ngClass]="[menuSubItem.icon]"></i>
+                <span class="ps-2">{{menuSubItem.title}}</span>
+                <span class="position-absolute top-50 end-0 translate-middle-y badge bg-secondary" *ngIf="menuSubItem.badge != '' ">{{menuSubItem.badge}}</span>
+              </a>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+        </mat-expansion-panel>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>

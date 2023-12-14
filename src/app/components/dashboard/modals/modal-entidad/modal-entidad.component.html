@@ -1,0 +1,97 @@
+<div class="position-relative p-2">
+  <app-header-modals titulo="¡Perfil de tu Negocio!" [dialogRef]="dialogRef"></app-header-modals>
+
+  <div mat-dialog-content class="px-3 pt-1 pb-2">
+    <form class="row" [formGroup]="formEntidad">
+      <div class="d-flex justify-content-end" *ngIf="formControl['estado'].value != ''">
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" id="estado" formControlName="estado">
+          <label class="form-check-label" for="estado">{{formControl['estado'].value? 'Activa' : 'Inactiva'}}</label>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3 mb-2">
+        <div class="form-floating">
+          <select class="form-select"
+            [ngClass]="_validaFormularioService.getInputStatus(this.formControl, 'tipo_identificacion')"
+            id="tipo_identificacion" formControlName="tipo_identificacion">
+            <option selected value="">Seleccione</option>
+            <option *ngFor="let op of listTipoIdentificacion.listado" [value]="op.id">{{op.nombre}}</option>
+          </select>
+          <label for="tipo_identificacion">Tipo Identificación</label>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3 mb-2">
+        <div class="form-floating">
+          <input type="text" class="form-control"
+            [ngClass]="_validaFormularioService.getInputStatus(this.formControl, 'identificacion')" id="identificacion"
+            formControlName="identificacion" placeholder="">
+          <label for="identificacion">Identificación</label>
+        </div>
+      </div>
+      <div class="col-12 col-md-12 col-lg-6 mb-2">
+        <div class="form-floating">
+          <input type="text" class="form-control"
+            [ngClass]="_validaFormularioService.getInputStatus(this.formControl, 'razon_social')" id="razon_social"
+            formControlName="razon_social" placeholder="">
+          <label for="razon_social">Razon Social</label>
+        </div>
+      </div>
+      <div class="col-12 mb-2">
+        <div class="form-floating">
+          <input type="text" [ngClass]="_validaFormularioService.getInputStatus(this.formControl, 'direccion')"
+            class="form-control" id="direccion" formControlName="direccion" placeholder="">
+          <label for="direccion">Dirección Comercial</label>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 mb-2">
+        <div class="form-floating">
+          <select class="form-select"
+            [ngClass]="_validaFormularioService.getInputStatus(this.formControl, 'departamento')" id="departamento"
+            formControlName="departamento">
+            <option selected value="">Seleccione</option>
+            <option *ngFor="let op of listDepartamentos.listado" [value]="op.id">{{op.nombre}}</option>
+          </select>
+          <label for="departamento">Departamento</label>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 mb-2">
+        <div class="form-floating">
+          <select class="form-select" [ngClass]="_validaFormularioService.getInputStatus(this.formControl, 'ciudad')"
+            id="ciudad" formControlName="ciudad">
+            <option selected value="">Seleccione</option>
+            <option *ngFor="let op of listCiudades.listado" [value]="op.id">{{op.nombre}}</option>
+          </select>
+          <label for="ciudad">Ciudad</label>
+        </div>
+      </div>
+      <div class="col-12 col-md-12 col-lg-4 mb-2">
+        <div class="form-floating">
+          <input type="text" [ngClass]="_validaFormularioService.getInputStatus(this.formControl, 'telefonos')"
+            class="form-control" id="telefonos" formControlName="telefonos" placeholder="">
+          <label for="telefonos">Telefono</label>
+        </div>
+      </div>
+      <div class="col-12 mb-2">
+        <div class="form-floating">
+          <textarea class="form-control"
+            [ngClass]="_validaFormularioService.getInputStatus(this.formControl, 'descripcion')" id="descripcion"
+            formControlName="descripcion" style="height: 100px; max-height: 100px;"
+            placeholder="Ingrese descripción de su negocio"></textarea>
+          <label for="descripcion">Descripción</label>
+        </div>
+      </div>
+    </form>
+  </div>
+  <hr class="m-1">
+  <div mat-dialog-actions>
+    <div class="d-flex gap-2 justify-content-end w-100">
+      <button *ngIf="btnFormulario.btnGuardar.estado" (click)="postRegistroEntidad()" type="button"
+        class="btn btn-outline-primary">Guardar</button>
+      <button *ngIf="btnFormulario.btnActualizar.estado" (click)="putRegistroEntidad()" type="button"
+        class="btn btn-outline-secondary">Actualizar</button>
+      <button *ngIf="btnFormulario.btnCancelar.estado" (click)="onBtnCancelar()" type="button"
+        class="btn btn-outline-danger">Cancelar</button>
+    </div>
+  </div>
+
+</div>

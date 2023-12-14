@@ -1,0 +1,11 @@
+<div class="container-fluid position-relative">
+  <div class="row align-items-center">
+      <div class="col-md-11">
+          <h1 class="h3 m-0">{{titulo}}</h1>
+      </div>
+  </div>
+  <div *ngIf="dialogRef" (click)="cerrarFormulario()" style="cursor: pointer;" class="position-absolute top-0 end-0"> 
+    <mat-icon class="btn_close_modal" ><i class="bi bi-x-circle"></i></mat-icon>
+  </div>
+</div>
+<hr class="my-1">

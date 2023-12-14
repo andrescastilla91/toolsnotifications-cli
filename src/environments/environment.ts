@@ -5,7 +5,7 @@ const typeEnv: 'dev' | 'dev_int' | 'prod' = 'dev';
 
 const url = {
   prod: {
-    url_base_api: "https://api.marfilbsc.co/api/",
+    url_base_api: "https://api..co/api/",
     url_base_storage: "",
   },
   dev: {

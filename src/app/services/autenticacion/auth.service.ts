@@ -4,6 +4,7 @@ import { modelDataLocalStorage, modelInicioSesionApiResponse } from "src/app/mod
 import { decrypt, encrypt, getDataLocalStorage } from "src/app/shared/utilidades/utilidades-encrypt";
 import { environment } from "src/environments/environment";
 import { MessageNotificationService } from "../shared/notification.service";
+import { modelEntidadesApiResponse } from "src/app/models/administracion/model-entidad.models";
 
 @Injectable({
   providedIn: 'root'
@@ -65,7 +66,7 @@ export class AuthService {
   }
 
   //Funcion GET Datos Entidad
-  public get getDataEntidad():any {
+  public get getDataEntidad():modelEntidadesApiResponse {
     return getDataLocalStorage(environment.KEY_SESION_LOCAL_STORAGE, 'entidad');
   }
 

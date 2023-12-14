@@ -1,0 +1,49 @@
+<header class="navbar bg-body-tertiary sticky-top bg-primary p-0 shadow" style="height: 60px;" >
+  <div class="navbar-brand d-none d-sm-block col-sm-2 col-md-1 text-center m-0 border-end" style="height: 100%;">
+    <img src="./../../../../assets/images/logo-toolsnotifications.svg" alt="Logo" style="height: 45px;" >
+  </div>
+  <div class="col-12 col-sm-10 col-md-11 d-flex justify-content-between ps-1 pe-3 " >
+    <div class="d-none d-sm-block" >
+      <div class="d-flex">
+        <button [matTooltip]="!statusSidenav? 'Ocultar Menu' : 'Mostrar Menu'" (click)="onBtnStatusSidenav()" style="width: 40px; height: 40px;" mat-icon-button class="p-1" color="accent">
+          <i *ngIf="!statusSidenav" class="bi bi-arrow-bar-left"></i>
+          <i *ngIf="statusSidenav" class="bi bi-arrow-bar-right"></i>
+        </button>
+        <form role="search">
+          <input class="form-control me-2" type="search" placeholder="Search">
+        </form>
+      </div>
+    </div>
+    <button class="navbar-toggler d-sm-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasResponsive">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="dropdown">
+      <a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <!--
+          <img src="./../../../../assets/images/avatar_F.jpg" style="height: 40px;" class="rounded-circle" alt="user avatar">
+        -->
+        <div class="rounded-circle border shadow-sm text-center align-self-center pt-2 bg-info" style="width: 40px; height: 40px;">
+          <span class="fw-bold text-muted fs-4">{{ getLetraInicialUsuario }}</span>
+        </div>
+        <div class="ps-3" style="width: 130px;">
+          <p class="mb-0 text-truncate text-capitalize ">{{dataUsuario.name}}</p>
+          <p class="mb-0 text-truncate">Web Designer</p>
+        </div>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-end">
+        <li *ngFor="let op of MENU_USUARIO">
+          <a class="dropdown-item" href="#" (click)="onBtnOpenModal(op.path); $event.preventDefault()">
+            <i [ngClass]="op.icon" class="me-2" ></i>
+            <span>{{op.title}}</span></a>
+        </li>
+        <li>
+          <div class="dropdown-divider mb-0"></div>
+        </li>
+        <li>
+          <a class="dropdown-item" href="#" (click)="signOut(); $event.preventDefault(); ">
+            <i class='bi bi-door-open me-2'></i><span>Cerrar Sesión</span></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>

@@ -4,13 +4,17 @@ import { LoaderService } from "../../services/shared/loader.service";
 import { catchError, map, throwError } from "rxjs";
 import { environment } from "src/environments/environment";
 import { MessageNotificationService } from "../../services/shared/notification.service";
+import { AuthService } from "src/app/services/autenticacion/auth.service";
+import { MatDialog } from "@angular/material/dialog";
 
 @Injectable()
 export class ResponseInterceptor implements HttpInterceptor{
 
   constructor(
     private _loaderService: LoaderService,
-    private _msjNotificationsService: MessageNotificationService
+    private _msjNotificationsService: MessageNotificationService,
+    private _authService: AuthService,
+    private modal: MatDialog
   ) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
@@ -36,6 +40,10 @@ export class ResponseInterceptor implements HttpInterceptor{
         const ERROR_MSJ = CAPTURA_ERRORES[error.status] || 'Solicitud compleja, comunicarse con el soporte tecnico';
         this._msjNotificationsService.mensajeError(ERROR_MSJ);
         !environment.production ? console.log(error) : false;
+        if(error.status == 401) {
+          this._authService.cerrarSesion();
+          this.modal.closeAll();
+        } 
         return throwError(() => error );
       })
     )

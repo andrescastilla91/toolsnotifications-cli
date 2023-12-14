@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AutenticacionModule } from './autenticacion/autenticacion.module';
 import { SharedModule } from '../shared/shared.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     CommonModule,
     ComponentsRoutingModule,
-    AutenticacionModule
+    AutenticacionModule,
+    DashboardModule
   ]
 })
 export class ComponentsModule { }

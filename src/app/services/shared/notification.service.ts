@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import Swal from 'sweetalert2';
+import Swal, { SweetAlertResult } from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +16,20 @@ export class MessageNotificationService {
 
   public mensajeInfo(msj:string){
     this.ToastInfo.fire({icon: "info", title: msj})
+  }
+
+  public mensajeConfirmacion(){
+
+  }
+
+  public mensajeAvisoImportante(msj:string): Promise<SweetAlertResult<any>> {
+    return Swal.fire({
+      title: msj,
+      icon: 'info',
+      showConfirmButton: true,
+      allowOutsideClick: false,
+      allowEscapeKey: false
+    })
   }
 
   private ToastError = Swal.mixin({

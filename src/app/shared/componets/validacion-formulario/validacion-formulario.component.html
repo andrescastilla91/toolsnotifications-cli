@@ -1,0 +1,19 @@
+
+<mat-error style="position: absolute;" 
+  *ngIf="this.validacion.formulario[this.validacion.input].invalid &&
+  ( this.validacion.formulario[this.validacion.input].dirty || this.validacion.formulario[this.validacion.input].touched)" >
+  
+  <span style="font-size: small;" class="text-danger"
+    *ngIf="this.validacion.formulario[this.validacion.input].hasError('required')">Obligatorio*</span>
+  <span style="font-size: small;" class="text-danger"
+    *ngIf="this.validacion.formulario[this.validacion.input].hasError('email')">Correo invalido!</span>
+  <span style="font-size: small;" class="text-danger"
+    *ngIf="this.validacion.formulario[this.validacion.input].hasError('pattern')">Texto ingresado no valido!</span>
+  <span style="font-size: small;" class="text-danger"
+    *ngIf="this.validacion.formulario[this.validacion.input].hasError('min')">Dato ingresado no valido!</span>
+  <span style="font-size: small;" class="text-danger"
+    *ngIf="this.validacion.formulario[this.validacion.input].hasError('minLength')">Dato ingresado no valido!</span>
+  <span style="font-size: small;" class="text-danger"
+    *ngIf="this.validacion.formulario[this.validacion.input].hasError('maxLength')">Dato ingresado no valido!</span>
+
+</mat-error>
