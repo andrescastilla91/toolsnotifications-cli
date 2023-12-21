@@ -6,6 +6,7 @@ import { modelUsuarioApiResponse } from 'src/app/models/autenticacion/model-usua
 import { modelHeaderMenu, typePathHeaderMenu } from 'src/app/models/shared/header-dashboard.models';
 import { AutenticacionService } from 'src/app/services/autenticacion/autenticacion.service';
 import { AuthService } from 'src/app/services/autenticacion/auth.service';
+import { MessageNotificationService } from 'src/app/services/shared/notification.service';
 import { SidenavService } from 'src/app/services/shared/sidenav.servise';
 
 @Component({
@@ -16,6 +17,7 @@ import { SidenavService } from 'src/app/services/shared/sidenav.servise';
 export class HeaderDashboardComponent implements OnInit {
 
   private cancelSuscripcion: Array<Subscription> = [];
+  private _msjNotificationsService: MessageNotificationService = inject(MessageNotificationService);
   private _sidenavService: SidenavService = inject(SidenavService);
   private _authService: AuthService = inject(AuthService);
   private _autenticacionService: AutenticacionService = inject(AutenticacionService);
@@ -75,6 +77,7 @@ export class HeaderDashboardComponent implements OnInit {
 
   protected signOut() {
     if(confirm("Esta seguro que desea cerrar sesión?")){
+      this._msjNotificationsService.mensajeSuccess("¡Hasta pronto! Has cerrado sesión exitosamente. Siempre estamos aquí cuando necesites volver. ¡Gracias por usar nuestra aplicación!");
       this._authService.cerrarSesion();
     }
   }

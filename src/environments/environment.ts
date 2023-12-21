@@ -6,14 +6,17 @@ const typeEnv: 'dev' | 'dev_int' | 'prod' = 'dev';
 const url = {
   prod: {
     url_base_api: "https://api..co/api/",
+    url_base_notificacion: "https://api.toolsnotifications.co/api/",
     url_base_storage: "",
   },
   dev: {
     url_base_api: "http://apidev.visionappweb.com/api/",
+    url_base_notificacion: "https://api.toolsnotifications.co/api/",
     url_base_storage: "",
   },
   dev_int: {
     url_base_api: `http://${HOST_API}:5351/api/`,
+    url_base_notificacion: "https://api..co/api/",
     url_base_storage: "",
   }
 }
@@ -27,6 +30,7 @@ export const environment = {
   KEY_ECRYPT:'pvK218mEvdyH3SjIK5Vg',
   KEY_SESION_LOCAL_STORAGE: '_authTools',
   API_BASE: url[typeEnv].url_base_api,
+  API_BASE_NOTIFICACION: url[typeEnv].url_base_notificacion,
   API_INTEGRACION_ENABLEMAIL: {
     KEY: 'live_49dd042d7bca7280eec6'
   }

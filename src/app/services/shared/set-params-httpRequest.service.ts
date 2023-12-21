@@ -8,7 +8,7 @@ export class SetParamsHttpRequestService {
 
   constructor() {}
 
-  setHttpParams(params:any): HttpParams{
+  public setHttpParamsRelacionada(params:any): HttpParams{
     let dataParams:any = {};
     if(params){
       const list:Array<string> = Object.keys(params);
@@ -21,6 +21,16 @@ export class SetParamsHttpRequestService {
     }
     let param = new HttpParams({fromObject: dataParams});
     return param;
+  }
+
+  public setHttpParamsNoRelacionada(searchFilter:any, page:number): any{
+    let param:any = {'page': `${page}`};
+    if(searchFilter){
+      Object.entries(searchFilter).forEach(([key, value]) => {
+        if(value) param[`${key}`] = `"${value}"`
+      });
+    }
+    return param
   }
 
 }

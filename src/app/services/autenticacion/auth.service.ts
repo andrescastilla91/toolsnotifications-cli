@@ -12,7 +12,6 @@ import { modelEntidadesApiResponse } from "src/app/models/administracion/model-e
 export class AuthService {
 
   private router = inject(Router);
-  private _msjNotificationsService: MessageNotificationService = inject(MessageNotificationService);
 
   /**Funcion SET Token Login */
   public setAuthorizationToken(resp: modelInicioSesionApiResponse):void{
@@ -83,7 +82,6 @@ export class AuthService {
 
   /**Method CLOSE Sesion */
   public cerrarSesion(){
-    this._msjNotificationsService.mensajeSuccess("¡Hasta pronto! Has cerrado sesión exitosamente. Siempre estamos aquí cuando necesites volver. ¡Gracias por usar nuestra aplicación!");
     this.deleteAuthorizationToken();
     this.router.navigate(['/']);
   }

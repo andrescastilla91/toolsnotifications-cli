@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "chat-marfil",
+  "private_key_id": "55cbf9b7dcc3ee941e1e14b0ec584ceb085ca887",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC8hR23WMCGCssC\ncJVxocg56o3K1dNY5Rk5BWaoRK1yTr9VSFk5Q2rozGYRiGDHJM+OEsL4NZDBYNW+\nXyiMtXroFFTyydsqlBOJn0/S0UMfV6dsAGaO8fBK5yTMuUkppG9/RENXLlGoyQSD\nKhTJIt52m4dvE8cuW+0KTzNDpKP8Mho7gYBo8D/XQA+3Qo7CUTiRReORKSifBocw\nCqve1C1TLX/il/X0rjDxRccdr0msr0d6+uvGHTifpwtXHqlOEvj10OizA40vNfzg\nhHjyiCYPBmxMYkhz7KpSeEdKH1oBFv6IKJtNyTaeCtBT/GlCUxawGNCKrOdNpMgK\n5Czq7UdNAgMBAAECggEAAJ1N8ojUFIFBKIOpzOxJ+RYC4DgMLNXuGkYQMLJ5o1b1\nQVp22/yYKyvUEjKk/GVM0gEk776MYYLsOB4EvjP7r8nEfdveuA1PTrUOsugrvInG\nEw6Lns3M4IzS+wLgObr+Wd8k50aDs/76tfFsL2D2pURLrtCIMFefiPTLybzQB4Hg\nWbRbdiwEDEONrkmRTMIU/2m6UpWw7cGnk5MZ6fQZmPMhVshFPuEyAl96UHlsLmB9\nlKEPHHxIan+2Y2zKZIj/f78fjWnpZrY42RN7wKXcSQlBZkYuBAQJjJVUF5uaGTUO\nixbD3OrO76MIRyiMXvIKgdR6g7wiKZJ92mv2DpZ4mwKBgQDqH2ZT1OvJG8xFb0pO\ntx0NbVgvyqZFdzVWxrdsVef1dBHMv3KH8z5dPHT0nJldft2V1fzfjWADNpr1R5n9\nAN3BVzS1geR7UhJruduoT+fbjBfbjaO5ZQf4zdgfCQ1Mmg4j0hoE9jKS51yryOqu\nKRgVmUJU3AJyEZDylwk9xsLnawKBgQDOItNCEDw3ziEC4iGpk6hDTZX8ifC3EKf+\nD1DzYvet20HXF4+/YwZcrCsYg+aEuLdCfjOewJzmnDywWvm819v2XzihJUQIIN+L\nfIOytKfEYLpfzADTnP80Fkt+DUnfyG8sVlyK12RGsjcn7VNRY1jeFCH/rkzUiWEi\nwHxRjwOSJwKBgQDBq0nVjSujCAi5Y29/oAA7bDloB2X1zr/j0axHxOSF6gcTbUdL\n6M6tB+bjtmszqU+ZtBNjxionXlNfFWTvonjOh9oFT7b2wJSWYn+vQrJUrhXKO+e0\n5Dts+LKQMce7lzCdNx7o/dQmK5dAT4q6mSngLBBv7DNlstxJoOE3JiVykwKBgEK/\nShLZOPaE+3F4kZfcZR6t78QfUl+kuBDvGrJEuJiGJ7KjQXuib/vwD+BXTXxqZ4TT\nYpmkGuodaxVb0AQTDXmgabDcZUQQiPIctnRWRQC0pYTBhP8Ali5ijb1aRjJ9L2p2\n6G5YwnKV4IBAO7td5Pe8IyosYVpsxZRAKcErAuf/AoGBANMO1t+esEro9+uzRezY\nDMnWUZFbh36NjRuuLS6ggvy6BapuNWPKHoyOLdOjFFLCQViIFzbneKcJaD1sbOk3\n1KXM686Bgk8mXIbVBr4BdNYL4YaMtBvNcddVYCJuZFulWLKao0O0a/b/pY5R+Ecp\nY1itsrFiJ1sQXLD4f7bbtIUx\n-----END PRIVATE KEY-----\n",
+  "client_email": "marfilbscchat@chat-marfil.iam.gserviceaccount.com",
+  "client_id": "112004877452444985204",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/marfilbscchat%40chat-marfil.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

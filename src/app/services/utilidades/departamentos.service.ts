@@ -17,8 +17,9 @@ export class DepartamentosService {
 
   public getListadoDepartamentos(params?: modelDepartamentosParamsHeaders){
     return this.http.get<{data:Array<modelDepartamentosApiResponse>}>(`${this.url_api}departamentos/index-where`, {
-      params: this.setHttpRequest.setHttpParams(params),
+      params: this.setHttpRequest.setHttpParamsRelacionada(params),
     });
   }
   
 }
+

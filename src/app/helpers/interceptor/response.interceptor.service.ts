@@ -41,6 +41,7 @@ export class ResponseInterceptor implements HttpInterceptor{
         this._msjNotificationsService.mensajeError(ERROR_MSJ);
         !environment.production ? console.log(error) : false;
         if(error.status == 401) {
+          this._msjNotificationsService.mensajeInfo("¡Oops! Parece que tu sesión ha expirado. Por favor, vuelve a iniciar sesión para continuar disfrutando de nuestras notificaciones.");
           this._authService.cerrarSesion();
           this.modal.closeAll();
         } 

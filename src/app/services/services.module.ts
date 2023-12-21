@@ -7,6 +7,7 @@ import { TipoIdentificacionesService } from './utilidades/tipo-identificaciones.
 import { DepartamentosService } from './utilidades/departamentos.service';
 import { CiudadesService } from './utilidades/ciudades.service';
 import { ValidaFormularioService } from './shared/valida-formulario.service';
+import { CuentasWhatsappService } from './notificacion-whatsapp/cuentas-whatsapp.service';
 
 @NgModule({
   imports: [
@@ -14,7 +15,12 @@ import { ValidaFormularioService } from './shared/valida-formulario.service';
     HttpClientModule
   ],
   providers: [
+    //Seguridad
     AutenticacionService,
+
+    //dashboard
+    ///whatsapp
+    CuentasWhatsappService,
 
     //Shared
     LoaderService,

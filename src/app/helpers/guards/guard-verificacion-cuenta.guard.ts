@@ -16,7 +16,7 @@ export const GuardVerificacionCuentaGuard: CanActivateFn = () => {
   }
 
   if (inject(AuthService).getAccountVerification && inject(AuthService).getAuthorizationToken){
-    inject(MessageNotificationService).mensajeInfo("¡Bienvenido/a a ToolsNotifications! Tu espacio de control está listo. ¡A explorar y disfrutar!");
+    inject(MessageNotificationService).mensajeSuccess("¡Bienvenido/a a ToolsNotifications! Tu espacio de control está listo. ¡A explorar y disfrutar!");
     inject(Router).navigate(['/dashboard']);
   }
   

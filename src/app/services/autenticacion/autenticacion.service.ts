@@ -36,7 +36,7 @@ export class AutenticacionService {
 
   public getConsultaPerfilUsuario(queryParams:modelUsuarioHttpParamsApi){
     return this.http.get<{data:modelUsuarioApiResponse}>(`${this.url_api}seguridad/users/search-where`, 
-      {params: this._setParamsHttpRequestService.setHttpParams(queryParams)})
+      {params: this._setParamsHttpRequestService.setHttpParamsRelacionada(queryParams)})
   }
   
 }

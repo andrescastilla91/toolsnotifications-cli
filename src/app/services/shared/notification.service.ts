@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { modelLoginCuentaWhatsappApiResponse } from 'src/app/models/notificacion-whatsapp/model-cuenta-whatsapp.models';
 import Swal, { SweetAlertResult } from 'sweetalert2';
 
 @Injectable({
@@ -27,6 +28,21 @@ export class MessageNotificationService {
       title: msj,
       icon: 'info',
       showConfirmButton: true,
+      allowOutsideClick: false,
+      allowEscapeKey: false
+    })
+  }
+
+  public mensajeNotiLoginWhatsApp(msj:string, data:modelLoginCuentaWhatsappApiResponse): Promise<SweetAlertResult<any>> {
+    return Swal.fire({
+      title: '¡Bienvenido/a a nuestra plataforma de notificaciones!',
+      text: msj,
+      timer: 30000,
+      timerProgressBar: true,
+      imageUrl: data.url,
+      imageWidth: 300,
+      imageHeight: 300,
+      showConfirmButton: false,
       allowOutsideClick: false,
       allowEscapeKey: false
     })

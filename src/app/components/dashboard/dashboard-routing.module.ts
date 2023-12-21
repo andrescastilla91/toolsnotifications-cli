@@ -9,6 +9,14 @@ const routes: Routes = [
       {
         path: 'administracion',
         loadChildren: () => import('./administrativo/administrativo-routing.module').then((m) => m.AdministrativoRoutingModule)
+      },
+      {
+        path: 'notificacion-email',
+        loadChildren: () => import('./notificacion-email/notificacion-email-routing.module').then((m) => m.NotificacionEmailRoutingModule)
+      },
+      {
+        path: 'notificacion-whatsapp',
+        loadChildren: () => import('./notificacion-whatsapp/notificacion-whatsapp-routing.module').then((m) => m.NotificacionWhatsappRoutingModule)
       }
     ]
   },

@@ -17,7 +17,7 @@ export class TipoIdentificacionesService {
 
   public getListadoTipoIdentificacion(params?: modelTipoIdentificacionParamsHeaders){
     return this.http.get<{data:Array<modelTipoIdentificacionApiResponse>}>(`${this.url_api}tipo-identificaciones/index-where`, {
-      params: this.setHttpRequest.setHttpParams(params),
+      params: this.setHttpRequest.setHttpParamsRelacionada(params),
     });
   }
 }

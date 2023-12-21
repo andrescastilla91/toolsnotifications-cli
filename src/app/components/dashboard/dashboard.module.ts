@@ -6,6 +6,8 @@ import { DashboardComponent } from './dashboard.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { AdministrativoModule } from './administrativo/administrativo.module';
 import { ModalsModule } from './modals/modals.module';
+import { NotificacionEmailRoutingModule } from './notificacion-email/notificacion-email-routing.module';
+import { NotificacionWhatsappModule } from './notificacion-whatsapp/notificacion-whatsapp.module';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { ModalsModule } from './modals/modals.module';
     DashboardRoutingModule,
     SharedModule,
     ModalsModule,
-    AdministrativoModule
+    AdministrativoModule,
+    NotificacionEmailRoutingModule,
+    NotificacionWhatsappModule
   ]
 })
 export class DashboardModule { }

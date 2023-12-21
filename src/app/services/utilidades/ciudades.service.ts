@@ -17,7 +17,7 @@ export class CiudadesService {
 
   public getListadoCiudades(params?: modelCiudadesParamsHeaders){
     return this.http.get<{data:Array<modelCiudadesApiResponse>}>(`${this.url_api}ciudades/index-where`, {
-      params: this.setHttpRequest.setHttpParams(params),
+      params: this.setHttpRequest.setHttpParamsRelacionada(params),
     });
   }
   
