@@ -1,0 +1,58 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb mb-1">
+    <li class="breadcrumb-item"><a href="#">Home</a></li>
+    <li class="breadcrumb-item"><a href="#">Library</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Data</li>
+  </ol>
+</nav>
+
+<div class="card">
+  <div class="card-header bg-transparent border-bottom-0 d-flex justify-content-between justify-content-md-end align-items-center">
+    <span class="card-title fs-5 my-2">Mensajes de WhatsApp</span>
+  </div>
+  <hr class="m-0 mx-2" >
+  <div class="card-body">
+    <form class="row" [formGroup]="formMensajeDirectoWhatsapp">
+      <div class="col-12 col-md-12 col-lg-4 mb-2">
+        <div class="form-floating">
+          <input type="text" class="form-control" list="dataListCuentas"
+            [ngClass]="_validaFormularioService.getInputStatus(this.formControl, 'cuenta')" id="cuenta"
+            formControlName="cuenta" placeholder="">
+          <label for="cuenta">Cuenta de WhatsApp</label>
+        </div>
+        <datalist id="dataListCuentas">
+          <option *ngFor="let op of listCuentasWhatsapp" [value]="op.usuario">{{op.razon_social}}</option>
+        </datalist>
+      </div>
+      <div class="col-12 col-md-12 col-lg-4 mb-2">
+        <div class="form-floating">
+          <input type="text" class="form-control" list="dataListContactos"
+            [ngClass]="_validaFormularioService.getInputStatus(this.formControl, 'numero_destino')" id="numero_destino" 
+            formControlName="numero_destino" placeholder="">
+          <label for="numero_destino">Contacto de WhatsApp</label>
+        </div>
+        <datalist id="dataListContactos">
+          <option *ngFor="let op of listContactosWhatsapp" [value]="op.numero">{{op.nombre}}</option>
+        </datalist>
+      </div>
+      <div class="col-12 col-md-12 col-lg-4 mb-2">
+        <div class="form-floating">
+          <select class="form-select text-capitalize"
+            [ngClass]="_validaFormularioService.getInputStatus(this.formControl, 'tipo_mensaje')"
+            id="tipo_mensaje" formControlName="tipo_mensaje">
+            <option selected value="">Seleccione</option>
+            <option *ngFor="let op of listTipoMensajeWhatsapp" [value]="op.constante">{{op.nombre}}</option>
+          </select>
+          <label for="tipo_mensaje">Tipo de Mensaje</label>
+        </div>
+      </div>
+      <app-editor-texto></app-editor-texto>
+      <div class="d-flex gap-2 justify-content-end w-100">
+        <button *ngIf="btnFormulario.btnGuardar.estado" (click)="postRegistroMensajeDirectoWhatsapp()" type="button"
+          class="btn btn-outline-primary">Enviar</button>
+        <button *ngIf="btnFormulario.btnCancelar.estado" (click)="onBtnCancelar()" type="button"
+          class="btn btn-outline-danger">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -22,7 +22,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     InterceptorModule,
     SharedModule,
     ServicesModule,
-    ComponentsModule,
+    ComponentsModule
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'es-ES'},

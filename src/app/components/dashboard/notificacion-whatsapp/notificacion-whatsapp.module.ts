@@ -5,17 +5,18 @@ import { NotificacionWhatsappRoutingModule } from './notificacion-whatsapp-routi
 import { CuentasComponent } from './cuentas/cuentas.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ContactosWhatsappComponent } from './contactos-whatsapp/contactos-whatsapp.component';
-
+import { MensajeDirectoWhatsappComponent } from './mensaje-directo-whatsapp/mensaje-directo-whatsapp.component';
 
 @NgModule({
   declarations: [
     CuentasComponent,
-    ContactosWhatsappComponent
+    ContactosWhatsappComponent,
+    MensajeDirectoWhatsappComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
-    NotificacionWhatsappRoutingModule
+    NotificacionWhatsappRoutingModule,
   ]
 })
 export class NotificacionWhatsappModule { }

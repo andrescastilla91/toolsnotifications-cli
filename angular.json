@@ -21,7 +21,7 @@
               "sweetalert2", 
               "moment", 
               "crypto-js",
-              "jquery"
+              "jquery","quill"
             ],
             "outputPath": "dist/toolsnotifications",
             "index": "src/index.html",
@@ -36,6 +36,9 @@
               "src/assets"
             ],
             "styles": [
+"./node_modules/quill/dist/quill.bubble.css",
+"./node_modules/quill/dist/quill.snow.css",
+"./node_modules/quill/dist/quill.core.css",
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",

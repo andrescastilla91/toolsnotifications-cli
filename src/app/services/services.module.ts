@@ -8,6 +8,7 @@ import { DepartamentosService } from './utilidades/departamentos.service';
 import { CiudadesService } from './utilidades/ciudades.service';
 import { ValidaFormularioService } from './shared/valida-formulario.service';
 import { CuentasWhatsappService } from './notificacion-whatsapp/cuentas-whatsapp.service';
+import { MensajeDirectoWhatsappService } from './notificacion-whatsapp/mensaje-directo-whatsapp.service';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { CuentasWhatsappService } from './notificacion-whatsapp/cuentas-whatsapp
     //dashboard
     ///whatsapp
     CuentasWhatsappService,
+    MensajeDirectoWhatsappService,
 
     //Shared
     LoaderService,

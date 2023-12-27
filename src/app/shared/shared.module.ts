@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoaderComponent } from './componets/loader/loader.component';
 import { MaterialModule } from './material/material.module';
 import { HeaderDashboardComponent } from './componets/header-dashboard/header-dashboard.component';
@@ -9,6 +9,8 @@ import { RouterModule } from '@angular/router';
 
 import { HeaderModalsComponent } from './componets/header-modals/header-modals.component';
 import { ValidacionFormularioComponent } from './componets/validacion-formulario/validacion-formulario.component';
+import { EditorTextoComponent } from './componets/editor-texto/editor-texto.component';
+import { QuillModule } from 'ngx-quill';
 @NgModule({
   declarations: [
     LoaderComponent,
@@ -16,12 +18,14 @@ import { ValidacionFormularioComponent } from './componets/validacion-formulario
     HeaderModalsComponent,
     SidebarDashboardComponent,
     ValidacionFormularioComponent,
+    EditorTextoComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    QuillModule
   ],
   exports: [
     LoaderComponent,
@@ -29,8 +33,11 @@ import { ValidacionFormularioComponent } from './componets/validacion-formulario
     HeaderModalsComponent,
     ValidacionFormularioComponent,
     SidebarDashboardComponent,
+    EditorTextoComponent,
     ReactiveFormsModule,
-    MaterialModule
+    FormsModule,
+    MaterialModule,
+    QuillModule
   ]
 })
 export class SharedModule { }
