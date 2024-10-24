@@ -18,6 +18,10 @@ export class AutenticacionService {
   private http: HttpClient = inject(HttpClient);
   private _setParamsHttpRequestService: SetParamsHttpRequestService = inject(SetParamsHttpRequestService);
 
+  public validaTools(){
+    return this.http.get('https://api.visionappweb.com/api/toolsnotifications/emails/templates/index-where?app="VISIONAPP"&ma_entidad_id=3')
+  }
+
   public postInicioSesion(data:modelInicioSesionApiRequest){
     return this.http.post<modelInicioSesionApiResponse>(`${this.url_api}seguridad/login`, data)
   }

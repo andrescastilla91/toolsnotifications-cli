@@ -6,12 +6,14 @@ import { CuentasComponent } from './cuentas/cuentas.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ContactosWhatsappComponent } from './contactos-whatsapp/contactos-whatsapp.component';
 import { MensajeDirectoWhatsappComponent } from './mensaje-directo-whatsapp/mensaje-directo-whatsapp.component';
+import { MensajeProgramadoWhatsappComponent } from './mensaje-programado-whatsapp/mensaje-programado-whatsapp.component';
 
 @NgModule({
   declarations: [
     CuentasComponent,
     ContactosWhatsappComponent,
-    MensajeDirectoWhatsappComponent
+    MensajeDirectoWhatsappComponent,
+    MensajeProgramadoWhatsappComponent
   ],
   imports: [
     CommonModule,

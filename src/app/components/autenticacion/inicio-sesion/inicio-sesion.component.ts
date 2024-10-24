@@ -46,6 +46,13 @@ export class InicioSesionComponent implements OnDestroy {
 
   //PETICIONES API
   public postInicioSesion(){
+    console.log("aaa");
+    
+    this._autenticacionService.validaTools().subscribe((resp)=>{
+      console.log(resp);
+      
+    });
+    return
     this.formInicioSesion.markAllAsTouched();
     this.formInicioSesion.updateValueAndValidity();
     if(this.formInicioSesion.invalid) return this._msjNotificationsService.mensajeInfo("Valide información de formulario.");

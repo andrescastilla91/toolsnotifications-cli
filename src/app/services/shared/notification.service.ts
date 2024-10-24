@@ -19,8 +19,13 @@ export class MessageNotificationService {
     this.ToastInfo.fire({icon: "info", title: msj})
   }
 
-  public mensajeConfirmacion(){
-
+  public mensajeConfirmacion(msj:string): Promise<SweetAlertResult<any>>{
+    return Swal.fire({
+      title: msj,
+      showDenyButton: true,
+      confirmButtonText: "Confirmar",
+      denyButtonText: "Cancelar"
+    })
   }
 
   public mensajeAvisoImportante(msj:string): Promise<SweetAlertResult<any>> {

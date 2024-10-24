@@ -8,6 +8,7 @@ import { CuentasWhatsappService } from 'src/app/services/notificacion-whatsapp/c
 import { MessageNotificationService } from 'src/app/services/shared/notification.service';
 import { ValidaFormularioService } from 'src/app/services/shared/valida-formulario.service';
 import { PaisesService } from 'src/app/services/utilidades/paises.service';
+import { Socket, io } from "socket.io-client";
 
 @Component({
   selector: 'app-cuentas',
@@ -32,6 +33,9 @@ export class CuentasComponent implements OnDestroy, OnInit{
   protected indicativoBase: string = '57';
   private urlLogo: string = '';
 
+  //private socket: Socket;
+
+
   constructor(
   ){
     this.formCuentasWhatsapp = this.fBuilder.group({
@@ -41,7 +45,16 @@ export class CuentasComponent implements OnDestroy, OnInit{
       direccion: ['', Validators.required],
       logo: [''],
       estado: ['']
-    })
+    });
+    
+    /*
+    this.socket = io('wss://echo.websocket.org');
+    this.socket.on('datosNuevos', (datos: any) => {
+      console.log('Datos nuevos del webhook:', datos);
+      // Aquí puedes manejar los datos recibidos en tu aplicación Angular
+    });
+    */
+    
   }
 
   ngOnDestroy(): void {
@@ -67,6 +80,38 @@ export class CuentasComponent implements OnDestroy, OnInit{
     this.btnFormulario.btnGuardar.estado = false;
   }
 
+  protected onBtnInactivarCuenta(item:modelCuentaWhatsappApiResponse){
+    this._mensaje.mensajeConfirmacion(`¿Estás seguro/a de que deseas inactivar tu cuenta? Esta acción desactivará tus notificaciones programadas. ¿Confirmas la inactivación de tu cuenta?`)
+    .then((resp) => {
+      if(resp.value){
+        this.formCuentasWhatsapp.patchValue({
+          id: item.id,
+          razon_social: item.razon_social,
+          direccion: item.direccion,
+          usuario: item.usuario,
+          estado: false
+        });
+        this.putRegistroCuentaWhatsapp();
+      }
+    })
+  }
+
+  protected onBtnActivarCuenta(item:modelCuentaWhatsappApiResponse){
+    this._mensaje.mensajeConfirmacion(`¿Estás seguro/a de que deseas reactivar tu cuenta? Una vez reactivada, podrás usarla nuevamente en el portal de notificaciones y disfrutar de todos nuestros servicios. ¿Confirmas la reactivación de tu cuenta?`)
+    .then((resp) => {
+      if(resp.value){
+        this.formCuentasWhatsapp.patchValue({
+          id: item.id,
+          razon_social: item.razon_social,
+          direccion: item.direccion,
+          usuario: item.usuario,
+          estado: true
+        });
+        this.putRegistroCuentaWhatsapp();
+      }
+    })
+  }
+
   private get getDataApi(): modelCuentaWhatsappApiRequest {
     return {
       ma_entidad_id: this._authService.getDataEntidad.id!.toString(),
@@ -74,6 +119,16 @@ export class CuentasComponent implements OnDestroy, OnInit{
       direccion: this.formControl['direccion'].value,
       logo_url: this.urlLogo,
       usuario: this.indicativoBase + this.formControl['usuario'].value,
+    }
+  }
+
+  private get getDataApiUpdate(): modelCuentaWhatsappApiRequest {
+    return {
+      ma_entidad_id: this._authService.getDataEntidad.id!.toString(),
+      razon_social: this.formControl['razon_social'].value,
+      direccion: this.formControl['direccion'].value,
+      logo_url: this.urlLogo,
+      estado: this.formControl['estado'].value
     }
   }
 
@@ -117,6 +172,18 @@ export class CuentasComponent implements OnDestroy, OnInit{
         })
       })
     })
+  }
+
+  protected putRegistroCuentaWhatsapp(){
+    this.formCuentasWhatsapp.markAllAsTouched();
+    this.formCuentasWhatsapp.updateValueAndValidity();
+    if(this.formCuentasWhatsapp.invalid) return this._mensaje.mensajeInfo(`Formulario incompleto. Valide información.`);
+    this._cuentasWhatsappService.putActualizaCuentasWhatsapp(this.getDataApiUpdate, this.formControl['id'].value)
+    .subscribe((resp) => {
+      this._mensaje.mensajeSuccess("Actualizacion realizada exitosamente.");
+      this.onBtnCancelar();
+      this.getListarCuentasWhatsapp();
+    });
   }
 
 }

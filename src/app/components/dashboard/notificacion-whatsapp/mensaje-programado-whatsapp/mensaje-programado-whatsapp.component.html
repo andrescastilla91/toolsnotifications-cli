@@ -1,0 +1,140 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb mb-1">
+    <li class="breadcrumb-item"><a href="#">Home</a></li>
+    <li class="breadcrumb-item"><a href="#">Library</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Data</li>
+  </ol>
+</nav>
+
+<div class="card">
+  <div class="card-header bg-transparent border-bottom-0 d-flex justify-content-between align-items-center ">
+    <div class="d-none d-md-block">
+      <button *ngIf="btnFormulario.btnCrear.estado" (click)="onBtnNuevaProgramacion()" type="button" class="btn btn-outline-info">
+        <i class="bi bi-plus-circle pe-2"></i> Nueva Programación
+      </button>
+    </div>
+    <span class="card-title fs-5 my-2 my-md-0 ">Programados de WhatsApp</span>
+  </div>
+  <hr class="m-0 mx-2" >
+  <div class="card-body d-flex justify-content-center align-items-center" style="min-height: 300px;" *ngIf="!listMensajesProgramadosWhatsapp.length && btnFormulario.btnCrear.estado">
+    <button *ngIf="btnFormulario.btnCrear.estado" (click)="onBtnNuevaProgramacion()" type="button" class="btn btn-outline-info p-4">
+      <i class="bi bi-plus-circle pe-2"></i> Nueva Programación
+    </button>
+  </div>
+  <!--SECCION FORMULARIO-->
+  <div class="card-body" *ngIf="!btnFormulario.btnCrear.estado">
+    <form class="row" [formGroup]="formMensajeProgramadoWhatsapp">
+      <div class="col-12 col-md-12 col-lg-4 mb-2">
+        <mat-form-field appearance="outline" style="width: 100%; margin-bottom: -1.25em;">
+          <mat-label>Fecha de Notificación</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="fecha_notificacion" >
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker touchUi #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col-12 col-md-12 col-lg-8 mb-2">
+        <div class="form-floating">
+          <input type="text" [ngClass]="_validaFormularioService.getInputStatus(this.formControl, 'nombre')"
+            class="form-control" id="nombre" formControlName="nombre" placeholder="">
+          <label for="nombre">Nombre de Notificación</label>
+        </div>
+      </div>
+      <div class="col-12 col-md-12 col-lg-6 mb-2">
+        <div class="form-floating">
+          <select class="form-select text-capitalize"
+            [ngClass]="_validaFormularioService.getInputStatus(this.formControl, 'tipo_notificacion')"
+            id="tipo_notificacion" formControlName="tipo_notificacion">
+            <option selected value="">Seleccione</option>
+            <option *ngFor="let op of listTipoNotificacion" [value]="op">{{op}}</option>
+          </select>
+          <label for="tipo_notificacion">Tipo de Notificación</label>
+        </div>
+      </div>
+      <div class="col-12 col-md-12 col-lg-6 mb-2">
+        <div class="form-floating">
+          <input type="number" min="1" [ngClass]="_validaFormularioService.getInputStatus(this.formControl, 'concurrencia_envio')"
+            class="form-control" id="concurrencia_envio" formControlName="concurrencia_envio" placeholder="">
+          <label for="concurrencia_envio">Concurrencia de Envio</label>
+        </div>
+      </div>
+      <div class="col-12 col-md-12 col-lg-6 mb-2">
+        <div class="form-floating">
+          <input type="text" class="form-control" list="dataListCuentas"
+            [ngClass]="_validaFormularioService.getInputStatus(this.formControl, 'cuenta')" id="cuenta"
+            formControlName="cuenta" placeholder="">
+          <label for="cuenta">Cuenta de WhatsApp</label>
+        </div>
+        <datalist id="dataListCuentas">
+          <option *ngFor="let op of listCuentasWhatsapp" [value]="op.usuario">{{op.razon_social}}</option>
+        </datalist>
+      </div>
+      <div class="col-12 col-md-12 col-lg-6 mb-2">
+        <div class="form-floating">
+          <select class="form-select text-capitalize"
+            [ngClass]="_validaFormularioService.getInputStatus(this.formControl, 'tipo_mensaje')"
+            id="tipo_mensaje" formControlName="tipo_mensaje">
+            <option selected value="">Seleccione</option>
+            <option *ngFor="let op of listTipoMensajeWhatsapp" [value]="op.constante">{{op.nombre}}</option>
+          </select>
+          <label for="tipo_mensaje">Tipo de Mensaje</label>
+        </div>
+      </div>
+      <mat-form-field appearance="outline">
+        <mat-label>Contactos de WhatsApp</mat-label>
+        <mat-select formControlName="contactos_destino" multiple>
+          <mat-option *ngFor="let op of listContactosWhatsapp" [value]="op.numero">{{op.nombre | titlecase }}</mat-option>
+        </mat-select>
+        <button matSuffix mat-icon-button [matTooltip]="btnFormulario.btnActualizar.nombre!" (click)="getListarContactosWhatsapp()">
+          <i class="bi bi-arrow-clockwise"></i>
+        </button>
+      </mat-form-field>
+      <app-editor-texto></app-editor-texto>
+      <div class="d-flex gap-2 justify-content-end w-100">
+        <button *ngIf="btnFormulario.btnGuardar.estado" (click)="postRegistroMensajeProgramadoWhatsapp()" type="button"
+          class="btn btn-outline-primary">Guardar</button>
+        <button *ngIf="btnFormulario.btnActualizar.estado" (click)="putRegistroMensajeProgramadoWhatsapp()" type="button"
+          class="btn btn-outline-secondary">Actualizar</button>
+        <button *ngIf="btnFormulario.btnCancelar.estado" (click)="onBtnCancelar()" type="button"
+          class="btn btn-outline-danger">Cancelar</button>
+      </div>
+    </form>
+  </div>
+
+
+  <!--SECCION LISTADO-->
+  <div class="card-body" *ngIf="listMensajesProgramadosWhatsapp.length && btnFormulario.btnCrear.estado">
+    <div class="d-flex gap-2 justify-content-end w-100 mb-2 d-md-none">
+      <button *ngIf="btnFormulario.btnCrear.estado" (click)="onBtnNuevaProgramacion()" type="button" class="btn btn-outline-info">
+        <i class="bi bi-plus-circle pe-2"></i> Nueva Programación
+      </button>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-6 col-lg-4 mb-2" *ngFor="let op of listMensajesProgramadosWhatsapp">
+        <mat-card class="shadow"  >
+          <mat-card-header>
+            <div mat-card-avatar class="position-relative">
+              <i class="fs-1 bi bi-chat-right-dots"></i>
+              <i class="bi bi-stopwatch position-absolute top-100 start-50 translate-middle"></i>
+            </div>
+            <mat-card-title class="d-inline-block text-truncate" style="max-width: 100%;" >{{op.nombre}}</mat-card-title>
+            <mat-card-subtitle><strong>Fecha Notificación: </strong> {{op.fechaNotificacion}}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="position-relative">
+              <p><strong>Envio: </strong> {{op.tipoNotificacion}} </p>
+              <span class="position-absolute top-50 end-0 translate-middle-y badge bg-secondary" [matTooltip]="'Notificación se repite ' + op.concurrenciaNotificacion + ' veces.'  " >{{op.concurrenciaNotificacion}}</span>
+            </div>
+            <p class="m-0"><strong>Mensaje: </strong></p>
+            <span class="d-inline-block text-truncate" style="max-width: 100%;">{{op.bodyMessage}}</span>
+          </mat-card-content>
+          <mat-card-actions align="end">
+            <button *ngIf="btnFormulario.btnEditar.estado" [matTooltip]="btnFormulario.btnEditar.nombre!" 
+              (click)="onBtnEditar(op)"
+              type="button" class="btn btn-outline-primary">
+              <i class="bi bi-pencil-square"></i></button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+
+</div>

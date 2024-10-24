@@ -11,7 +11,7 @@ export class RequestInterceptor implements HttpInterceptor {
   
   constructor(private _authService: AuthService, private _loaderService: LoaderService, private _msjNotificationsService: MessageNotificationService) {}
 
-  private listUrlWithoutToken: Array<string> = ['login', 'register', 'ipify', 'i18n']
+  private listUrlWithoutToken: Array<string> = ['login', 'register', 'ipify', 'i18n', 'emails']
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     this._loaderService.addPeticion(req);
@@ -19,6 +19,8 @@ export class RequestInterceptor implements HttpInterceptor {
     let request = req;
     
     if (this.listUrlWithoutToken.find((item)=> req.url.includes(item))) {
+      console.log("entro");
+      
       return next.handle(request);
     }
 

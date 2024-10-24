@@ -1,4 +1,4 @@
-import { Component, ViewChild, inject } from '@angular/core';
+import { Component, Input, ViewChild, inject } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { QuillEditorComponent } from 'ngx-quill';
 import { FormatTextService } from 'src/app/services/shared/format-text.service';
@@ -29,6 +29,10 @@ export class EditorTextoComponent {
 
   public clearEditorTexto(){
     this.dataEditor.setValue('');
+  }
+
+  public setValueEditorTexto(value: string):void{
+    this.dataEditor.setValue(value);
   }
 
   
